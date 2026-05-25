@@ -1,0 +1,279 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #10b981;
+  --color-secondary: #0ea5e9;
+  --color-dark: #0f172a;
+  --color-darker: #020617;
+  --color-light: #ffffff;
+  --font-sans: 'Inter', 'Roboto', sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-[#020617] text-slate-100 font-sans antialiased selection:bg-emerald-500/30;
+    margin: 0;
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-extrabold tracking-tight text-white;
+  }
+
+  p {
+    @apply text-slate-400 leading-relaxed;
+  }
+}
+
+@layer base {
+  body.light-theme {
+    background-color: #ffffff;
+    color: #0f172a;
+  }
+
+  body.light-theme .text-slate-100,
+  body.light-theme .text-slate-200,
+  body.light-theme .text-slate-300,
+  body.light-theme .text-white {
+    color: #0f172a !important;
+  }
+
+  body.light-theme .text-slate-400,
+  body.light-theme .text-slate-500 {
+    color: #475569 !important;
+  }
+
+  body.light-theme .bg-slate-900,
+  body.light-theme .bg-slate-800 {
+    background-color: #f8fafc !important;
+  }
+
+  body.light-theme .bg-slate-900\/50,
+  body.light-theme .bg-slate-800\/50,
+  body.light-theme .bg-slate-800\/40,
+  body.light-theme .bg-slate-800\/60,
+  body.light-theme .bg-slate-800\/80,
+  body.light-theme .bg-slate-900\/40,
+  body.light-theme .bg-slate-900\/60 {
+    background-color: rgba(255, 255, 255, 0.7) !important;
+  }
+
+  body.light-theme ::placeholder {
+    color: #94a3b8 !important;
+  }
+
+  body.light-theme .border-slate-700,
+  body.light-theme .border-slate-700\/50,
+  body.light-theme .border-slate-600,
+  body.light-theme .border-slate-800,
+  body.light-theme .border-slate-800\/50 {
+    border-color: #cbd5e1 !important;
+  }
+  
+  body.light-theme .bg-\[\#020617\] {
+    background-color: #ffffff !important;
+  }
+
+  body.light-theme .hover\:bg-slate-800:hover {
+    background-color: #e2e8f0 !important;
+  }
+
+  body.light-theme .glass-panel,
+  body.light-theme .glass-card {
+    background-color: rgba(248, 250, 252, 0.7) !important;
+    border-color: #e2e8f0 !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03) !important;
+  }
+
+  body.light-theme .glass-nav {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    border-bottom-color: #e2e8f0 !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05) !important;
+  }
+
+  body.light-theme .marketing-cta {
+    background-image: linear-gradient(to bottom right, rgba(16, 185, 129, 0.1), rgba(255, 255, 255, 1), rgba(59, 130, 246, 0.1)) !important;
+  }
+
+  body.light-theme .settings-info-box {
+    background-color: #f8fafc !important;
+    border-color: #cbd5e1 !important;
+    color: #334155 !important;
+  }
+
+  body.light-theme .exam-card {
+    background-color: #ffffff !important;
+    border-color: #e2e8f0 !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05) !important;
+  }
+
+  body.light-theme .exam-card:hover {
+    background-color: #f8fafc !important;
+    border-color: #cbd5e1 !important;
+  }
+}
+
+@layer components {
+  /* Premium Glassmorphism utilities */
+  .glass-panel {
+    @apply bg-slate-900/40 backdrop-blur-2xl border border-slate-700/50 rounded-3xl shadow-[0_8px_32px_rgba(0,0,0,0.3)] transition-all duration-500;
+  }
+  
+  .glass-card {
+    @apply bg-slate-900/40 backdrop-blur-xl border border-white/5 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:bg-slate-800/60 hover:border-white/10 hover:shadow-[0_8px_40px_rgba(16,185,129,0.1)] transition-all duration-500 ease-out hover:-translate-y-1;
+  }
+
+  .glass-nav {
+    @apply bg-[#020617]/70 backdrop-blur-xl border-b border-white/5 transition-all duration-500;
+  }
+
+  /* Premium Buttons */
+  .btn-primary {
+    @apply px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-bold rounded-2xl shadow-[0_0_20px_rgba(16,185,129,0.25)] hover:shadow-[0_0_40px_rgba(16,185,129,0.4)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 border border-emerald-400/20;
+  }
+
+  .btn-outline {
+    @apply px-6 py-3 border border-slate-700/80 bg-slate-800/30 hover:bg-slate-700/50 hover:border-slate-600 text-slate-200 font-bold rounded-2xl transition-all duration-300 backdrop-blur-md shadow-lg hover:shadow-xl hover:shadow-slate-900/50;
+  }
+
+  /* Glow Effects */
+  .glow-emerald {
+    @apply shadow-[0_0_30px_rgba(16,185,129,0.15)] hover:shadow-[0_0_50px_rgba(16,185,129,0.3)] transition-shadow duration-500;
+  }
+
+  .glow-cyan {
+    @apply shadow-[0_0_30px_rgba(6,182,212,0.15)] hover:shadow-[0_0_50px_rgba(6,182,212,0.3)] transition-shadow duration-500;
+  }
+
+  /* Gradients */
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-teal-200;
+  }
+
+  .text-gradient-blue {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500;
+  }
+
+  /* Animations */
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+  }
+
+  @keyframes float-delayed {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+
+  .animate-marquee {
+    animation: marquee 25s linear infinite;
+    display: inline-block;
+  }
+
+  .animate-marquee:hover {
+    animation-play-state: paused;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-float-delayed {
+    animation: float-delayed 7s ease-in-out infinite 1s;
+  }
+
+  .animate-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .animate-shimmer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(16, 185, 129, 0.05) 20%,
+      rgba(20, 184, 166, 0.2) 50%,
+      rgba(16, 185, 129, 0.05) 80%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    animation: shimmer 2s infinite ease-in-out;
+  }
+
+  /* Custom React DatePicker Styling for Glassmorphism */
+  .custom-datepicker-wrapper .react-datepicker-wrapper {
+    width: 100%;
+  }
+
+  .custom-datepicker-wrapper .react-datepicker {
+    background: rgba(15, 23, 42, 0.95) !important; /* slate-900 */
+    backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(51, 65, 85, 0.8) !important; /* slate-700 */
+    border-radius: 1rem !important;
+    font-family: inherit !important;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3) !important;
+    color: #e2e8f0 !important;
+  }
+
+  .custom-datepicker-wrapper .react-datepicker__header {
+    background: transparent !important;
+    border-bottom: 1px solid rgba(51, 65, 85, 0.5) !important;
+    padding-top: 1rem !important;
+  }
+
+  .custom-datepicker-wrapper .react-datepicker__current-month,
+  .custom-datepicker-wrapper .react-datepicker-time__header,
+  .custom-datepicker-wrapper .react-datepicker-year-header {
+    color: #f8fafc !important; /* slate-50 */
+    font-weight: 700 !important;
+  }
+
+  .custom-datepicker-wrapper .react-datepicker__day-name,
+  .custom-datepicker-wrapper .react-datepicker__day,
+  .custom-datepicker-wrapper .react-datepicker__time-name {
+    color: #cbd5e1 !important; /* slate-300 */
+  }
+
+  .custom-datepicker-wrapper .react-datepicker__day:hover {
+    background-color: rgba(16, 185, 129, 0.2) !important; /* emerald-500/20 */
+    border-radius: 0.5rem !important;
+    color: #34d399 !important; /* emerald-400 */
+  }
+
+  .custom-datepicker-wrapper .react-datepicker__day--selected,
+  .custom-datepicker-wrapper .react-datepicker__day--keyboard-selected {
+    background-color: #10b981 !important; /* emerald-500 */
+    color: #0f172a !important; /* slate-900 */
+    border-radius: 0.5rem !important;
+    font-weight: bold !important;
+  }
+
+  .custom-datepicker-wrapper .react-datepicker__day--disabled {
+    color: #475569 !important; /* slate-600 */
+  }
+
+  .custom-datepicker-wrapper .react-datepicker__navigation-icon::before {
+    border-color: #94a3b8 !important; /* slate-400 */
+  }
+  .custom-datepicker-wrapper .react-datepicker__navigation:hover *::before {
+    border-color: #10b981 !important; /* emerald-500 */
+  }
+}
