@@ -29,19 +29,14 @@ const Login = () => {
     e.preventDefault();
     setError('');
     setIsLoading(true);
-    
     try {
       const response = await api.post('/auth/login', {
         email: formData.email,
         password: formData.password
       });
-      
       if (response.status === 200 && response.data.access_token) {
-        // Store JWT token and role
         localStorage.setItem('token', response.data.access_token);
         localStorage.setItem('userRole', response.data.user?.role || 'user');
-        
-        // Redirect based on user role
         if (response.data.user && response.data.user.role === 'admin') {
           navigate('/admin');
         } else {
@@ -49,7 +44,14 @@ const Login = () => {
         }
       }
     } catch (err) {
-      setError(err.response?.data?.msg || 'Invalid email or password. Please try again.');
+      console.error('Login error:', err);
+      if (err.response) {
+        setError(err.response.data?.msg || `Login failed: ${err.response.status} ${err.response.statusText}`);
+      } else if (err.request) {
+        setError('Network error: Unable to reach the server. Please check your connection or try again later.');
+      } else {
+        setError('An unexpected error occurred. Please try again.');
+      }
     } finally {
       setIsLoading(false);
     }

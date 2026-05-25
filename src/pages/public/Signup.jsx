@@ -26,27 +26,29 @@ const Signup = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
     setError('');
-    
     if (formData.password !== formData.confirmPassword) {
       setError("Passwords do not match");
       return;
     }
-
     setIsLoading(true);
-    
     try {
       // The backend currently only needs email and password
       const response = await api.post('/auth/register', {
         email: formData.email,
         password: formData.password
       });
-      
       if (response.status === 201) {
-        // Redirect to login page on success
         navigate('/login', { state: { message: "Account created successfully! Please log in." } });
       }
     } catch (err) {
-      setError(err.response?.data?.msg || 'An error occurred during registration. Please try again.');
+      console.error('Signup error:', err);
+      if (err.response) {
+        setError(err.response.data?.msg || `Signup failed: ${err.response.status} ${err.response.statusText}`);
+      } else if (err.request) {
+        setError('Network error: Unable to reach the server. Please check your connection or try again later.');
+      } else {
+        setError('An unexpected error occurred. Please try again.');
+      }
     } finally {
       setIsLoading(false);
     }
